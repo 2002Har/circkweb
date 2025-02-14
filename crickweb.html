@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket WPL 2025 Promotion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .options button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .options button:hover {
+            background-color: #45a049;
+        }
+        .share-container {
+            display: none;
+            margin-top: 20px;
+        }
+        .join-group {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome to WPL 2025 Free Report</h2>
+        <p>Select an option:</p>
+        <div class="options">
+            <button onclick="selectOption(1)">Option 1</button>
+            <button onclick="selectOption(2)">Option 2</button>
+            <button onclick="selectOption(3)">Option 3</button>
+        </div>
+        <div class="share-container" id="shareContainer">
+            <p>Share this link with 10-15 WhatsApp contacts to continue:</p>
+            <button onclick="shareOnWhatsApp()">Share on WhatsApp</button>
+        </div>
+        <div class="join-group" id="joinGroup">
+            <p>Join the group to continue:</p>
+            <a id="whatsappGroupLink" href="#" target="_blank">Join Group</a>
+        </div>
+    </div>
+
+    <script>
+        let shareCount = 0;
+        const minShares = 10;
+        const maxShares = 15;
+        const groupLink = "https://chat.whatsapp.com/YOUR_GROUP_LINK"; // Replace with your actual group link
+
+        function selectOption(option) {
+            if (option === 3) {
+                document.getElementById("shareContainer").style.display = "block";
+            }
+        }
+
+        function shareOnWhatsApp() {
+            if (shareCount < maxShares) {
+                const shareMessage = encodeURIComponent("Join this amazing WPL 2025 free report group: " + groupLink);
+                const whatsappURL = `https://api.whatsapp.com/send?text=${shareMessage}`;
+                window.open(whatsappURL, '_blank');
+                shareCount++;
+            }
+            if (shareCount >= minShares) {
+                document.getElementById("joinGroup").style.display = "block";
+                document.getElementById("whatsappGroupLink").href = groupLink;
+            }
+        }
+    </script>
+</body>
+</html>
